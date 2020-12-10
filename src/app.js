@@ -1,11 +1,13 @@
 import ShoppingList from "./shoppingList/shoppingList.js";
 import Cart from "./cart/cart.js";
 import Control from './control/control.js';
+import Logo from './logo/logo.js';
 import Grid from "./grid/grid.js";
 import GridItem from "./grid/gridItem.js";
 import * as Products from './cart/products.mock';
 
 const entry = document.querySelector("#app");
+const pageLogo = 'https://image.freepik.com/free-vector/online-shopping-logo-design-template_130382-9.jpg';
 
 class App {
   constructor() {
@@ -13,7 +15,7 @@ class App {
       selectedProducts: [],
       count: 0,
       total: 0,
-      viewStop: true,
+      viewShop: true,
     };
 
     this.render();
@@ -55,11 +57,16 @@ class App {
   }
 
   render() {
+    console.log(this.state);
     const { selectedProducts, count, total, viewShop } = this.state;
     entry.innerHTML = "";
 
     const element = document.createElement("div");
     element.classList.add("container");
+
+    const logo = new Logo({
+      pageLogo,
+    })
 
     const shoppingList = new ShoppingList({
       products: Products.products,
@@ -76,6 +83,7 @@ class App {
       onSwitchButtonClick: () => this.handleSwitchButtonClick()
     })
 
+    element.appendChild(logo.render());
     this.state.viewShop ? element.appendChild(shoppingList.render()) : element.appendChild(cart.render());
     element.appendChild(control.render());
 
