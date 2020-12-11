@@ -15,7 +15,9 @@ class ShoppingListItem {
     this.props.onButtonClick(product);
   }
 
-  // DOM elements
+  // ======== DOM elements========================
+  
+  //---------Grid elements------------------------
 
   createGrid() {
     const grid = new Grid();
@@ -27,38 +29,7 @@ class ShoppingListItem {
     return gridItem.render();
   }
 
-  createShoppingListItem(product) {
-    const { image, name, description, price } = product;
-    const element = document.createElement("div");
-    element.classList.add("shopping-list__item");
-
-    const grid = this.createGrid();
-    const gridItemOne = this.createGridItem('shrink');
-    const gridItemTwo = this.createGridItem('grow');
-    const gridItemThree = this.createGridItem('shrink');
-
-    const itemImage = this.createShoppingListImage(image);
-    const itemName = this.createShoppingListItemName(name);
-    const itemDescription = this.createShoppingListItemDescription(description);
-    const itemPrice = this.createShoppingListPrice(price);
-    const addButton = this.createAddItemButton(product);
-
-    gridItemOne.appendChild(itemImage);
-
-    gridItemTwo.appendChild(itemName);
-    gridItemTwo.appendChild(itemDescription);
-
-    gridItemThree.appendChild(itemPrice);
-    gridItemThree.appendChild(addButton);
-
-    grid.appendChild(gridItemOne);
-    grid.appendChild(gridItemTwo);
-    grid.appendChild(gridItemThree);
-
-    element.appendChild(grid);
-
-    return element;
-  }
+   //---------Components------------------------
 
   createShoppingListItemDetails() {
     const element = document.createElement("div");
@@ -110,6 +81,41 @@ class ShoppingListItem {
     });
 
     return newButton;
+  }
+
+   //---------Main component------------------------
+
+  createShoppingListItem(product) {
+    const { image, name, description, price } = product;
+    const element = document.createElement("div");
+    element.classList.add("shopping-list__item");
+
+    const grid = this.createGrid();
+    const gridItemOne = this.createGridItem('shrink');
+    const gridItemTwo = this.createGridItem('grow');
+    const gridItemThree = this.createGridItem('shrink');
+
+    const itemImage = this.createShoppingListImage(image);
+    const itemName = this.createShoppingListItemName(name);
+    const itemDescription = this.createShoppingListItemDescription(description);
+    const itemPrice = this.createShoppingListPrice(price);
+    const addButton = this.createAddItemButton(product);
+
+    gridItemOne.appendChild(itemImage);
+
+    gridItemTwo.appendChild(itemName);
+    gridItemTwo.appendChild(itemDescription);
+
+    gridItemThree.appendChild(itemPrice);
+    gridItemThree.appendChild(addButton);
+
+    grid.appendChild(gridItemOne);
+    grid.appendChild(gridItemTwo);
+    grid.appendChild(gridItemThree);
+
+    element.appendChild(grid);
+
+    return element;
   }
 
   render() {
