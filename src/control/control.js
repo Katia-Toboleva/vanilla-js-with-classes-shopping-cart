@@ -9,25 +9,33 @@ class Control {
     this.props.onSwitchButtonClick();
   }
 
-  createControl() {
-    const { count, total, viewShop } = this.props;
-
-    const control = document.createElement("div");
-    control.classList.add("control");
-
+  createControlTitle() {
     const controlTitle = document.createElement("div");
     controlTitle.classList.add("control__title");
     controlTitle.innerText = `Your cart:`;
+    return controlTitle;
+  }
 
+  createControlCount() {
+    const { count } = this.props;
     const controlCount = document.createElement("div");
     controlCount.classList.add("control__count");
     controlCount.innerText = `Items: ${count}`;
+    return controlCount;
+  }
 
+  createControlTotal() {
+    const { total } = this.props;
     const controlTotal = document.createElement("div");
     const totalPrice = Number((total).toFixed(2));
     controlTotal.classList.add("control__total");
     controlTotal.innerText = `Total: £${totalPrice}`;
 
+    return controlTotal;
+  }
+
+  createSwitchButton() {
+    const { viewShop } = this.props;
     const button = new Button();
     const switchButton = button.render();
     switchButton.classList.add("btn--switch");
@@ -37,10 +45,26 @@ class Control {
       this.handleSwitchButtonClick();
     });
 
+    return switchButton;
+  }
+
+  appendElements(control, controlTitle, controlCount, controlTotal, switchButton) {
     control.appendChild(controlTitle);
     control.appendChild(controlCount);
     control.appendChild(controlTotal);
     control.appendChild(switchButton);
+  }
+
+  createControl() {
+    const control = document.createElement("div");
+    control.classList.add("control");
+
+    const controlTitle = this.createControlTitle();
+    const controlCount = this.createControlCount();
+    const controlTotal = this.createControlTotal();
+    const switchButton = this.createSwitchButton();
+
+    this.appendElements(control, controlTitle, controlCount, controlTotal, switchButton);
 
     return control;
   }
