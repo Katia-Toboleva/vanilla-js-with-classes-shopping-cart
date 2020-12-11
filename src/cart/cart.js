@@ -11,7 +11,7 @@ class Cart {
     const cart = document.createElement("div");
     cart.classList.add("cart");
 
-    this.props.products.forEach((product) => {
+    this.props.selectedProducts.forEach((product) => {
       const cartItem = this.createCartItem(product);
       cart.appendChild(cartItem);
     });
