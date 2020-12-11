@@ -79,8 +79,8 @@ body {
 }
 
 .shopping-list__item__image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin-right: 15px;
 }
 
@@ -110,7 +110,7 @@ body {
 
 .shopping-list__item__price .price {
   color: #052d4e;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -131,8 +131,8 @@ body {
 }
 
 .cart__item__image {
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   margin-right: 15px;
 }
 
@@ -207,6 +207,7 @@ body {
 
 .btn--add {
   background: #803366;
+  padding: 0.7em 2.5em;
 }
 
 .btn--add:hover {
