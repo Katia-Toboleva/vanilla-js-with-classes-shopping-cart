@@ -83,38 +83,66 @@ class ShoppingListItem {
     return newButton;
   }
 
+  appendElements(
+    gridItemOne,
+    gridItemTwo,
+    gridItemThree,
+    grid,
+    itemImage,
+    itemName,
+    itemDescription,
+    itemPrice,
+    addButton,
+    element,
+    ) {
+      gridItemOne.appendChild(itemImage);
+
+      gridItemTwo.appendChild(itemName);
+      gridItemTwo.appendChild(itemDescription);
+
+      gridItemThree.appendChild(itemPrice);
+      gridItemThree.appendChild(addButton);
+
+      grid.appendChild(gridItemOne);
+      grid.appendChild(gridItemTwo);
+      grid.appendChild(gridItemThree);
+
+      element.appendChild(grid);
+    }
+
+    createShoppingListItemComponents(image, name, description, price, product, element) {
+      const grid = this.createGrid();
+      const gridItemOne = this.createGridItem('shrink');
+      const gridItemTwo = this.createGridItem('grow');
+      const gridItemThree = this.createGridItem('shrink');
+
+      const itemImage = this.createShoppingListImage(image);
+      const itemName = this.createShoppingListItemName(name);
+      const itemDescription = this.createShoppingListItemDescription(description);
+      const itemPrice = this.createShoppingListPrice(price);
+      const addButton = this.createAddItemButton(product);
+
+      this.appendElements(
+        gridItemOne,
+        gridItemTwo,
+        gridItemThree,
+        grid,
+        itemImage,
+        itemName,
+        itemDescription,
+        itemPrice,
+        addButton,
+        element,
+        )
+    }
+
    //---------Main component------------------------
 
   createShoppingListItem(product) {
     const { image, name, description, price } = product;
     const element = document.createElement("div");
     element.classList.add("shopping-list__item");
-
-    const grid = this.createGrid();
-    const gridItemOne = this.createGridItem('shrink');
-    const gridItemTwo = this.createGridItem('grow');
-    const gridItemThree = this.createGridItem('shrink');
-
-    const itemImage = this.createShoppingListImage(image);
-    const itemName = this.createShoppingListItemName(name);
-    const itemDescription = this.createShoppingListItemDescription(description);
-    const itemPrice = this.createShoppingListPrice(price);
-    const addButton = this.createAddItemButton(product);
-
-    gridItemOne.appendChild(itemImage);
-
-    gridItemTwo.appendChild(itemName);
-    gridItemTwo.appendChild(itemDescription);
-
-    gridItemThree.appendChild(itemPrice);
-    gridItemThree.appendChild(addButton);
-
-    grid.appendChild(gridItemOne);
-    grid.appendChild(gridItemTwo);
-    grid.appendChild(gridItemThree);
-
-    element.appendChild(grid);
-
+    this.createShoppingListItemComponents(image, name, description, price, product, element)
     return element;
   }
 
