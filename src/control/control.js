@@ -48,6 +48,19 @@ class Control {
     return switchButton;
   }
 
+  createCheckoutButton() {
+    const button = new Button();
+    const checkoutButton = button.render();
+    checkoutButton.classList.add("btn--checkout");
+    checkoutButton.innerText = "Go to Checkout";
+
+    checkoutButton.addEventListener("click", () => {
+      // this.handleCheckoutButtonClick();
+    });
+
+    return checkoutButton;
+  }
+
   appendElements(control, controlTitle, controlCount, controlTotal, switchButton) {
     control.appendChild(controlTitle);
     control.appendChild(controlCount);
@@ -56,6 +69,7 @@ class Control {
   }
 
   createControl() {
+    const { viewShop } = this.props;
     const control = document.createElement("div");
     control.classList.add("control");
 
@@ -64,7 +78,18 @@ class Control {
     const controlTotal = this.createControlTotal();
     const switchButton = this.createSwitchButton();
 
-    this.appendElements(control, controlTitle, controlCount, controlTotal, switchButton);
+    if(!viewShop) {
+      const proceedButton = this.createCheckoutButton();
+      control.appendChild(proceedButton);
+    }
+
+    this.appendElements(
+      control,
+      controlTitle,
+      controlCount,
+      controlTotal,
+      switchButton,
+    );
 
     return control;
   }

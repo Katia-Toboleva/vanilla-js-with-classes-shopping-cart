@@ -103,7 +103,7 @@ body {
 
 .control__title {
   font-size: 20px;
-  color: rgb(5, 45, 78)
+  color: rgb(5, 45, 78);
 }
 
 .control__count,
@@ -185,7 +185,7 @@ body {
 
 .btn--switch {
   display: block;
-  background-color:  rgb(162, 19, 19);
+  background-color:  rgb(199, 0, 50);
   width: 100%;
   padding: 20px 40px;
   font-size: 20px;
@@ -193,5 +193,19 @@ body {
 }
 
 .btn--switch:hover {
-  background-color: rgba(66, 0, 0);
+  background-color: rgb(124, 0, 31);
+}
+
+.btn--checkout {
+  display: block;
+  background-color:  rgb(4, 109, 69);
+  width: 100%;
+  padding: 20px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.btn--checkout:hover {
+  background-color: rgb(3, 66, 42);
 }

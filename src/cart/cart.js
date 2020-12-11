@@ -7,6 +7,15 @@ class Cart {
 
   // ======== DOM elements========================
 
+  createCartItem(product) {
+    const { onRemoveButtonClick } = this.props;
+    const cartItem = new CartItem({
+      product,
+      onRemoveButtonClick,
+    });
+    return cartItem.render();
+  }
+
   createCart() {
     const cart = document.createElement("div");
     cart.classList.add("cart");
@@ -17,15 +26,6 @@ class Cart {
     });
 
     return cart;
-  }
-
-  createCartItem(product) {
-    const { onRemoveButtonClick } = this.props;
-    const cartItem = new CartItem({
-      product,
-      onRemoveButtonClick,
-    });
-    return cartItem.render();
   }
 
   render() {
