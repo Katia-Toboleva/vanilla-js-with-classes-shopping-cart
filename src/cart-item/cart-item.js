@@ -81,6 +81,62 @@ class CartItem {
 
     return newButton;
   }
+
+  appendElements(
+    gridItemOne,
+    gridItemTwo,
+    gridItemThree,
+    grid,
+    cartImage,
+    cartTitle,
+    cartName,
+    cartDescription,
+    cartPrice,
+    removeButton,
+    element,
+    ) {
+      gridItemOne.appendChild(cartImage);
+
+      gridItemTwo.appendChild(cartTitle);
+      gridItemTwo.appendChild(cartName);
+      gridItemTwo.appendChild(cartDescription);
+
+      gridItemThree.appendChild(cartPrice);
+      gridItemThree.appendChild(removeButton);
+
+      grid.appendChild(gridItemOne);
+      grid.appendChild(gridItemTwo);
+      grid.appendChild(gridItemThree);
+
+      element.appendChild(grid);
+    }
+
+    createCartComponents(image, name, description, price, product, element) {
+      const cartImage = this.createCartItemImage(image);
+      const cartTitle = this.createCartTitle()
+      const cartName = this.createCartItemName(name);
+      const cartDescription = this.createCartItemDescription(description);
+      const cartPrice = this.createCartItemPrice(price);
+      const removeButton = this.createRemoveButton(product);
+      const grid = this.createGrid();
+      const gridItemOne = this.createGridItem();
+      const gridItemTwo = this.createGridItem();
+      const gridItemThree = this.createGridItem();
+
+      this.appendElements(
+        gridItemOne,
+        gridItemTwo,
+        gridItemThree,
+        grid,
+        cartImage,
+        cartTitle,
+        cartName,
+        cartDescription,
+        cartPrice,
+        removeButton,
+        element,
+        )
+    }
   //-----------Main component--------
 
   createCartItem(product) {
@@ -88,33 +144,7 @@ class CartItem {
     const element = document.createElement("div");
     element.classList.add("cart__item");
 
-    const cartImage = this.createCartItemImage(image);
-    const cartTitle = this.createCartTitle()
-    const cartName = this.createCartItemName(name);
-    const cartDescription = this.createCartItemDescription(description);
-    const cartPrice = this.createCartItemPrice(price);
-    const removeButton = this.createRemoveButton(product);
-
-    const grid = this.createGrid();
-    const gridItemOne = this.createGridItem();
-    const gridItemTwo = this.createGridItem();
-    const gridItemThree = this.createGridItem();
-
-    gridItemOne.appendChild(cartImage);
-
-    gridItemTwo.appendChild(cartTitle);
-    gridItemTwo.appendChild(cartName);
-    gridItemTwo.appendChild(cartDescription);
-
-    gridItemThree.appendChild(cartPrice);
-    gridItemThree.appendChild(removeButton);
-
-    grid.appendChild(gridItemOne);
-    grid.appendChild(gridItemTwo);
-    grid.appendChild(gridItemThree);
-
-    element.appendChild(grid);
-
+    this.createCartComponents(image, name, description, price, product, element)
     return element;
   }
 
