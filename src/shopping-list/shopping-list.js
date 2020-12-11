@@ -22,10 +22,10 @@ class ShoppingList {
   }
 
   createShoppingListItem(product) {
-    const { onButtonClick } = this.props;
+    const { onAddButtonClick } = this.props;
     const shoppingListItem = new ShoppingListItem({
       product,
-      onButtonClick,
+      onAddButtonClick,
     });
     return shoppingListItem.render();
   }

@@ -12,11 +12,11 @@ class ShoppingListItem {
   //==========Events==================
 
   handleAddItemButtonClick(product) {
-    this.props.onButtonClick(product);
+    this.props.onAddButtonClick(product);
   }
 
   // ======== DOM elements========================
-  
+
   //---------Grid elements------------------------
 
   createGrid() {
