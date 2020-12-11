@@ -150,6 +150,11 @@ body {
   margin: 0.2em auto 0.6em;
 }
 
+.cart__item__price {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .btn {
   cursor: pointer;
   display: inline-block;
