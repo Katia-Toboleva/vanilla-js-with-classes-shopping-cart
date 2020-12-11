@@ -1,9 +1,4 @@
-import ShoppingList from "./shopping-list/shopping-list.js";
-import Cart from "./cart/cart.js";
-import Control from './control/control.js';
-import Logo from './logo/logo.js';
-import Grid from "./grid/grid.js";
-import GridItem from "./grid/gridItem.js";
+import AppElements from './app-elements/app-elements.js';
 import * as Products from './cart/products.mock';
 
 const entry = document.querySelector("#app");
@@ -21,6 +16,8 @@ class App {
 
     this.render();
   }
+
+  //=============Events=================
 
   handleButtonClick(product) {
     this.state.selectedProducts.push(product);
@@ -47,49 +44,37 @@ class App {
     this.render();
   }
 
-  createGrid() {
-    const grid = new Grid();
-    return grid.render();
-  }
+  //===============DOM elements===========
+  //---------------Components-----------
 
-  createGridItem() {
-    const gridItem = new GridItem();
-    return gridItem.render();
+  createAppElements() {
+    const {
+      selectedProducts,
+      count,
+      total,
+      viewShop,
+    } = this.state;
+
+    const appElements = new AppElements({
+      selectedProducts,
+      count,
+      total,
+      viewShop,
+      products: Products.products,
+      pageLogo,
+      onAddButtonClick: (product) => this.handleButtonClick(product),
+      onRemoveButtonClick: (product) => this.handleRemoveButtonClick(product),
+      onSwitchButtonClick: () => this.handleSwitchButtonClick(),
+    })
+
+    return appElements.render();
   }
 
   render() {
     console.log(this.state);
-    const { selectedProducts, count, total, viewShop } = this.state;
     entry.innerHTML = "";
-
-    const element = document.createElement("div");
-    element.classList.add("container");
-
-    const logo = new Logo({
-      pageLogo,
-    })
-
-    const shoppingList = new ShoppingList({
-      products: Products.products,
-      onButtonClick: (product) => this.handleButtonClick(product)
-    });
-
-    const cart = new Cart({
-      products: selectedProducts,
-      onRemoveButtonClick: (product) => this.handleRemoveButtonClick(product)
-    });
-
-    const control = new Control({
-      count, total, viewShop,
-      onSwitchButtonClick: () => this.handleSwitchButtonClick()
-    })
-
-    element.appendChild(logo.render());
-    this.state.viewShop ? element.appendChild(shoppingList.render()) : element.appendChild(cart.render());
-    element.appendChild(control.render());
-
-
-    entry.appendChild(element);
+    const appElements = this.createAppElements();
+    entry.appendChild(appElements);
   }
 }
 
