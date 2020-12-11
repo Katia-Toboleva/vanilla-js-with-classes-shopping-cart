@@ -4,20 +4,18 @@ import Price from '../price/price.js';
 import Grid from "../grid/grid.js";
 import GridItem from "../grid/gridItem.js";
 
-
-class ShoppingList {
+class ShoppingListItem {
   constructor(props) {
     this.props = props;
   }
 
-  // Events
-  // ======================================
+  //==========Events==================
+
   handleAddItemButtonClick(product) {
     this.props.onButtonClick(product);
   }
 
-  // Elements
-  // ======================================
+  // DOM elements
 
   createGrid() {
     const grid = new Grid();
@@ -29,20 +27,8 @@ class ShoppingList {
     return gridItem.render();
   }
 
-  createShoppingList() {
-    const element = document.createElement("div");
-    element.classList.add("shopping-list");
-
-    this.props.products.forEach((product) => {
-      const shoppingListItem = this.createShoppingListItem(product);
-
-      element.appendChild(shoppingListItem);
-    });
-
-    return element;
-  }
-
   createShoppingListItem(product) {
+    const { image, name, description, price } = product;
     const element = document.createElement("div");
     element.classList.add("shopping-list__item");
 
@@ -51,20 +37,19 @@ class ShoppingList {
     const gridItemTwo = this.createGridItem('grow');
     const gridItemThree = this.createGridItem('shrink');
 
-    const image = this.createShoppingListImage(product.image);
-    const name = this.createShoppingListItemName(product);
-    const description = this.createShoppingListItemDescription(product);
-    const price = this.createShoppingListPrice(product.price);
-    const button = this.createAddItemButton(product);
+    const itemImage = this.createShoppingListImage(image);
+    const itemName = this.createShoppingListItemName(name);
+    const itemDescription = this.createShoppingListItemDescription(description);
+    const itemPrice = this.createShoppingListPrice(price);
+    const addButton = this.createAddItemButton(product);
 
-    gridItemOne.appendChild(image);
+    gridItemOne.appendChild(itemImage);
 
-    gridItemTwo.appendChild(name);
-    gridItemTwo.appendChild(description);
+    gridItemTwo.appendChild(itemName);
+    gridItemTwo.appendChild(itemDescription);
 
-    gridItemThree.appendChild(price);
-    gridItemThree.appendChild(button);
-
+    gridItemThree.appendChild(itemPrice);
+    gridItemThree.appendChild(addButton);
 
     grid.appendChild(gridItemOne);
     grid.appendChild(gridItemTwo);
@@ -90,18 +75,18 @@ class ShoppingList {
     return element;
   }
 
-  createShoppingListItemName(product) {
+  createShoppingListItemName(name) {
     const element = document.createElement("div");
     element.classList.add("shopping-list__item__name");
-    element.innerText = product.name;
+    element.innerText = name;
 
     return element;
   }
 
-  createShoppingListItemDescription(product) {
+  createShoppingListItemDescription(description) {
     const element = document.createElement("div");
     element.classList.add("shopping-list__item__description");
-    element.innerText = product.description;
+    element.innerText = description;
 
     return element;
   }
@@ -115,7 +100,7 @@ class ShoppingList {
   }
 
   createAddItemButton(product) {
-    const button = new Button(product);
+    const button = new Button();
     const newButton = button.render();
     newButton.classList.add("btn--add");
     newButton.innerText = "Add to Cart";
@@ -128,9 +113,10 @@ class ShoppingList {
   }
 
   render() {
-    const parent = this.createShoppingList();
-    return parent;
+    const { product } = this.props;
+    const shoppingListItem = this.createShoppingListItem(product);
+    return shoppingListItem;
   }
 }
 
-export default ShoppingList;
+export default ShoppingListItem;

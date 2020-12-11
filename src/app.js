@@ -1,4 +1,4 @@
-import ShoppingList from "./shoppingList/shoppingList.js";
+import ShoppingList from "./shopping-list/shopping-list.js";
 import Cart from "./cart/cart.js";
 import Control from './control/control.js';
 import Logo from './logo/logo.js';

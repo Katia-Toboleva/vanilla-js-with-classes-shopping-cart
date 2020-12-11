@@ -3,16 +3,16 @@ class Image {
     this.props = props;
   }
 
-  createImage() {
+  createImage(src) {
     const image = document.createElement("img");
-    const {src} = this.props;
     image.classList.add("image");
     image.setAttribute("src", src)
     return image;
   }
 
   render() {
-    const image = this.createImage();
+    const {src} = this.props;
+    const image = this.createImage(src);
     return image;
   }
 }

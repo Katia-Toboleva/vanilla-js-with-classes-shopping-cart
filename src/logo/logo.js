@@ -3,16 +3,16 @@ class Logo {
     this.props = props;
   }
 
-  createLogo() {
+  createLogo(pageLogo) {
     const logo = document.createElement("img");
-    const {pageLogo} = this.props;
     logo.classList.add("logo");
     logo.setAttribute("src", pageLogo)
     return logo;
   }
 
   render() {
-    const logo = this.createLogo();
+    const {pageLogo} = this.props;
+    const logo = this.createLogo(pageLogo);
     return logo;
   }
 }
