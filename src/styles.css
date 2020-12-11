@@ -6,7 +6,7 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(32, 23, 68);
+  background-color: rgb(64, 52, 109);
 }
 
 .container {
@@ -41,6 +41,15 @@ body {
 .grid__item--grow {
   flex-grow: 1;
   flex-shrink: 0;
+}
+
+.logo {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 320px;
+  display: block;
 }
 
 .shopping-list {
