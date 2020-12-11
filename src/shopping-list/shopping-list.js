@@ -5,12 +5,6 @@ class ShoppingList {
     this.props = props;
   }
 
-  // Events
-  // ======================================
-  handleAddItemButtonClick(product) {
-    this.props.onButtonClick(product);
-  }
-
   // Elements
   // ======================================
 
@@ -28,11 +22,10 @@ class ShoppingList {
   }
 
   createShoppingListItem(product) {
+    const { onButtonClick } = this.props;
     const shoppingListItem = new ShoppingListItem({
       product,
-      onButtonClick: (product) => {
-        this.handleAddItemButtonClick(product)
-     }
+      onButtonClick,
     });
     return shoppingListItem.render();
   }
