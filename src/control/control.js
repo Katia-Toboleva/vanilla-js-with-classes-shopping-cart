@@ -24,10 +24,9 @@ class Control {
     controlCount.innerText = `Items: ${count}`;
 
     const controlTotal = document.createElement("div");
-    const totalPrice = (total).toFixed(2);
-    const totalPriceView = totalPrice < 0 ? (totalPrice * -1 ): totalPrice;
+    const totalPrice = Number((total).toFixed(2));
     controlTotal.classList.add("control__total");
-    controlTotal.innerText = `Total: £${totalPriceView}`;
+    controlTotal.innerText = `Total: £${totalPrice}`;
 
     const button = new Button();
     const switchButton = button.render();
