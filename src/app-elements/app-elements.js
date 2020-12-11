@@ -2,50 +2,58 @@ import ShoppingList from "../shopping-list/shopping-list.js";
 import Cart from "../cart/cart.js";
 import Control from '../control/control.js';
 import Logo from '../logo/logo.js';
-import Banner from '../banner/banner.js';
 
 class AppElements {
   constructor(props) {
     this.props = props;
   }
 
-  createAppElements() {
-    const {
-      selectedProducts,
-      count,
-      total,
-      viewShop,
-      products,
-      pageLogo,
-      onAddButtonClick,
-      onRemoveButtonClick,
-      onSwitchButtonClick,
-     } = this.props;
+  createLogo() {
+    const { pageLogo } = this.props;
+    return new Logo({ pageLogo })
+  }
 
+  createShoppingList() {
+    const { products, onAddButtonClick } = this.props;
+    return new ShoppingList({
+      products,
+      onAddButtonClick,
+    });
+  }
+
+  createCart() {
+    const { selectedProducts, onRemoveButtonClick } = this.props;
+    return new Cart({
+      selectedProducts,
+      onRemoveButtonClick,
+    });
+  }
+
+  createControl() {
+    const { count, total, viewShop, onSwitchButtonClick } = this.props;
+    return new Control({
+      count, total, viewShop, onSwitchButtonClick,
+    })
+  }
+
+  appendElements(element, logo, shoppingList, cart, control) {
+    const { selectedProducts, viewShop } = this.props;
+    const emptyCart = !viewShop && selectedProducts.length === 0;
+    element.appendChild(logo.render());
+
+    (viewShop || emptyCart) ? element.appendChild(shoppingList.render()) : element.appendChild(cart.render());
+    element.appendChild(control.render());
+  }
+
+  createAppElements() {
     const element = document.createElement("div");
     element.classList.add("container");
 
-    const logo = new Logo({ pageLogo })
-
-    const shoppingList = new ShoppingList({
-      products,
-      onAddButtonClick,
-    });
-
-    const cart = new Cart({
-      selectedProducts,
-      onRemoveButtonClick,
-    });
-
-    const banner = new Banner()
-
-    const control = new Control({
-      count, total, viewShop, onSwitchButtonClick,
-    })
-
-    element.appendChild(logo.render());
-    viewShop ? element.appendChild(shoppingList.render()) : element.appendChild(cart.render());
-    element.appendChild(control.render());
+    const logo = this.createLogo();
+    const shoppingList = this.createShoppingList();
+    const cart = this.createCart();
+    const control = this.createControl();
+    this.appendElements(element, logo, shoppingList, cart, control)
 
     return element;
   }
