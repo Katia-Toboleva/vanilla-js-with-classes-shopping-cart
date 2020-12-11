@@ -1,0 +1,20 @@
+.grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  &__item {
+    flex-basis: auto;
+
+    &--shrink {
+      flex-shrink: 1;
+      flex-grow: 0;
+    }
+
+    &--grow {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+  }
+}

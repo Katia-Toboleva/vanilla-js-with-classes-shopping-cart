@@ -1,0 +1,25 @@
+.control {
+  background-color: aliceblue;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 40px 20px 40px 30px;
+}
+
+.control__title {
+  font-size: 20px;
+  color: #052d4e;
+}
+
+.control__count, .control__total {
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #052d4e;
+}
+
+.control__total {
+  margin-bottom: 25px;
+}

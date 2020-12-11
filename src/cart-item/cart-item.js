@@ -39,7 +39,7 @@ class CartItem {
   }
   createCartItemImage(src) {
     const element = document.createElement("div");
-    element.classList.add("shopping-list__item__image");
+    element.classList.add("cart__item__image");
     const image = new Image({src});
     element.appendChild(image.render())
     return element;

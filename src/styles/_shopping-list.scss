@@ -1,0 +1,47 @@
+.shopping-list {
+  margin-top: 1em;
+
+  &__item {
+    border: 2px solid rgb(173, 191, 230);
+    padding: 0.5em;
+    margin: 0.5em;
+    background: rgb(224, 229, 255);
+    width: 600px;
+
+    &__image {
+      width: 100px;
+      height: 100px;
+      margin-right: 15px;
+
+      .image {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &__name {
+      color: rgb(5, 45, 78);
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    &__description {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 15px;
+      font-style: italic;
+      margin-right: 10px;
+    }
+
+    &__price {
+      margin-bottom: 10px;
+      text-align: center;
+
+      .price {
+        color: rgb(5, 45, 78);;
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
+}

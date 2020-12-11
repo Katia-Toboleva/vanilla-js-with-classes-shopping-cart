@@ -1,0 +1,53 @@
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.7em 1.2em;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  &--add {
+    background: rgb(128, 51, 102);
+
+    &:hover {
+      background: rgb(5, 45, 78);
+    }
+  }
+
+  &--remove {
+    background-color: rgb(162, 19, 19);
+
+    &:hover {
+      background-color: rgb(66, 0, 0);
+    }
+  }
+
+  &--switch {
+    display: block;
+    background-color:  rgb(199, 0, 50);
+    width: 100%;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: rgb(124, 0, 31);
+    }
+  }
+
+  &--checkout {
+    display: block;
+    background-color:  rgb(4, 109, 69);
+    width: 100%;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+
+    &:hover {
+      background-color: rgb(3, 66, 42);
+    }
+  }
+}
