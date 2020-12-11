@@ -35,11 +35,18 @@ class App {
     this.state.count = this.state.count  - 1;
     this.state.total = this.state.total  - product.price;
 
+    if(this.state.selectedProducts.length === 0) {
+      this.state.viewShop = true;
+    }
+
     this.render();
   }
 
   handleSwitchButtonClick() {
-    this.state.viewShop = !this.state.viewShop;
+    const { selectedProducts } = this.state;
+    if(selectedProducts.length !== 0) {
+      this.state.viewShop = !this.state.viewShop;
+    }
 
     this.render();
   }
