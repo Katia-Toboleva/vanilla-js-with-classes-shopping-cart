@@ -4,7 +4,7 @@ class Logo {
   }
 
   createLogo() {
-    const logo = document.createElement("logo");
+    const logo = document.createElement("img");
     const {pageLogo} = this.props;
     logo.classList.add("logo");
     logo.setAttribute("src", pageLogo)
