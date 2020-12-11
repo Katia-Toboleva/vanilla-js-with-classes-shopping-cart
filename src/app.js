@@ -9,6 +9,7 @@ import * as Products from './cart/products.mock';
 const entry = document.querySelector("#app");
 const pageLogo = 'https://image.freepik.com/free-vector/online-shopping-logo-design-template_130382-9.jpg';
 
+
 class App {
   constructor() {
     this.state = {
