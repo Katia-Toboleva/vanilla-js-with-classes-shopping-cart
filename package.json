@@ -2,22 +2,29 @@
   "name": "js-shopping_list_and_cart",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "node-sass": "^5.0.0",
     "r": "0.0.5",
     "s": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.15.0",
+    "file-loader": "^6.2.0",
+    "node-sass": "^5.0.0",
     "parcel-bundler": "^1.6.1",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
-    "webpack": "^5.10.0"
+    "style-loader": "^2.0.0",
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0"
   },
   "keywords": []
 }
