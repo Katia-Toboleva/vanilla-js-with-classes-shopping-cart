@@ -1,4 +1,4 @@
-##Shopping cart with Vanilla JS and Classes.
+## Shopping cart with Vanilla JS and Classes.
 ### Description: 
 The app mimics an online shop: the user is offered a list of options available and can add any of them to a cart. Once the user has chosen all the necessary item, they can view/modify the shopping cart. In the shopping cart the items can be either removed or the user can go back to the list to add more items. 
 
